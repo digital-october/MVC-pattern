@@ -2,31 +2,19 @@
 
 namespace Core\View;
 
+use Twig\Loader\FilesystemLoader;
+use Twig\Environment;
+
 class View
 {
-    protected $template = null;
-    protected $data = [];
-
-    public function setTemplate($template)
+    public static function init()
     {
-        $this->template = $template;
-        return $this;
+        $loader = new FilesystemLoader($_SERVER['DOCUMENT_ROOT'] . getenv('VIEWS_STORAGE'));
+        $paths = [];
+
+        if (getenv('APP_ENV') === 'production')
+            $paths['cache'] = $_SERVER['DOCUMENT_ROOT'] . '/storage/cache/views';
+
+        return new Environment($loader, $paths);
     }
-
-
-    public function setData(array $data)
-    {
-        $this->data = $data;
-        return $this;
-    }
-
-
-    public function render($page)
-    {
-        extract($this->data, EXTR_OVERWRITE);
-        $_CONTENT_VIEW =  __DIR__. '/../../app/Views/' . $page . '.php';
-        $template = include __DIR__. '/../../app/Views/' . $this->template . '.php';
-        return $template;
-    }
-
 }

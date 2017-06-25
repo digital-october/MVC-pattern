@@ -2,6 +2,8 @@
 
 namespace Core\Routing\Route\Item;
 
+use Core\Controller\Controller;
+
 abstract class RouteItemAbstract implements RouteItemInterface
 {
     protected $uri;
@@ -25,7 +27,7 @@ abstract class RouteItemAbstract implements RouteItemInterface
     {
         if ($this->runMiddleware()) {
             $controller = new $this->controller();
-            return $controller->{$this->action}();
+            return Controller::exitHandler($controller->{$this->action}());
         }
     }
 
