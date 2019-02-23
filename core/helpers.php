@@ -1,5 +1,6 @@
 <?php
 
-function view( $path ) {
+function view($path)
+{
     return \Core\Registry::view()->render($path);
 }

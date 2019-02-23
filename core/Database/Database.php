@@ -2,58 +2,30 @@
 
 namespace Core\Database;
 
+use Illuminate\Database\Capsule\Manager as Capsule;
+
 class Database
 {
-    static protected $pdo;
-
-
-    public function connection($host, $dbname, $user, $pass, $driver = 'mysql')
+    public function connection($host, $database, $username, $password, $driver = 'mysql')
     {
-        try{
-        self::$pdo = new \PDO("$driver:host=$host;dbname=$dbname", $user, $pass);
-        }catch (\Exception $e){
-            print_r($e);
-        }
+        $capsule = new Capsule;
+
+        $capsule->addConnection([
+            'driver'    => $driver,
+            'host'      => $host,
+            'database'  => $database,
+            'username'  => $username,
+            'password'  => $password,
+            'charset'   => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix'    => '',
+        ]);
+
+        // Make this Capsule instance available globally via static methods... (optional)
+        $capsule->setAsGlobal();
+
+        // Setup the Eloquent ORM... (optional; unless you've used setEventDispatcher())
+        $capsule->bootEloquent();
     }
 
-
-    public function query($query)
-    {
-
-        $result = self::$pdo->query($query);
-
-        if ($result)
-            $result = $result->fetchAll(\PDO::FETCH_ASSOC);
-        else {
-            print_r($this->db->getPdo()->errorInfo());
-            exit;
-        }
-
-        return $result;
-    }
-
-
-    public function getColumns($table, callable $callback)
-    {
-        $columns = $this->query("SHOW COLUMNS FROM {$table}");
-        $result = [];
-        if($callback) {
-            foreach ($columns as $column) {
-                $result[] = $callback($column);
-            }
-            return $result;
-        }
-        return $columns;
-    }
-
-
-    public function prepare($query, $params)
-    {
-        $sth = $this->prepare($query);
-        return $sth->execute($params);
-    }
-
-    public function getPdo(){
-        return self::$pdo;
-    }
 }

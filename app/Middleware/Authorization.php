@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Middleware;
 
 use App\Models\User;
@@ -15,7 +16,7 @@ class Authorization
             if ($authUser->hash == $_COOKIE['hash']) {
                 return true;
             }
-        }else{
+        } else {
             echo 'Для выполнения этой операции необходимо авторизироваться';
             return false;
         }

@@ -8,7 +8,6 @@
 
 namespace Core\Response;
 
-
 class Response
 {
     protected $headers = [];

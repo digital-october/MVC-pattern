@@ -4,9 +4,9 @@ $dotenv = new Dotenv\Dotenv(__DIR__ . '/../');
 $dotenv->load();
 
 
-/*$config = include __DIR__.'/../config/Database.php';
+$config = include __DIR__.'/../config/database.php';
 $db = new Core\Database\Database();
-$db->connection($config['host'], $config['dbname'], $config['user'], $config['pass']);*/
+$db->connection($config['host'], $config['database'], $config['username'], $config['password']);
 
 
 \Core\Registry::add([

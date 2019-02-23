@@ -24,11 +24,11 @@ abstract class RouteCollectionAbstract implements RouteCollectionInterface
     public function find($url, $method = 'GET')
     {
         $url = strtolower($url);
-  
-        return $this->findCollection(function ($item) use ($url, $method) {
 
-            if ($item->getUri() == $url && $item->getMethod() == strtoupper($method))
+        return $this->findCollection(function ($item) use ($url, $method) {
+            if ($item->getUri() == $url && $item->getMethod() == strtoupper($method)) {
                 return $item;
+            }
         });
     }
 
@@ -37,8 +37,9 @@ abstract class RouteCollectionAbstract implements RouteCollectionInterface
         $result = null;
         foreach ($this->collection as $item) {
             $result = $callable($item);
-            if ($result)
+            if ($result) {
                 return $result;
             }
+        }
     }
 }

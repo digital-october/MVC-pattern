@@ -2,8 +2,8 @@
 
 return [
     'driver' => 'mysql',
-    'dbname' => getenv('DB_NAME'),
     'host' => getenv('DB_HOST'),
-    'user' => getenv('DB_USER'),
+    'database' => getenv('DB_DATABASE'),
+    'username' => getenv('DB_USERNAME'),
     'password' => getenv('DB_PASSWORD'),
 ];

@@ -35,8 +35,9 @@ abstract class RouteItemAbstract implements RouteItemInterface
     {
         foreach ($this->middleware as $middleware) {
             $mid = new $middleware();
-            if (!$mid->handle())
+            if (!$mid->handle()) {
                 return false;
+            }
         }
 
         return true;

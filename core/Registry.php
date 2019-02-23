@@ -15,14 +15,14 @@ class Registry
 
     static public function add(array $object)
     {
-        foreach ($object as  $key => $value)
+        foreach ($object as $key => $value) {
             self::$collection[$key] = $value;
-
+        }
     }
+
 
     static public function getAll()
     {
         return self::$collection;
     }
-
 }

@@ -1,14 +1,18 @@
 {
-    "name": "noname-simple-framework-php",
+    "name": "my-lyrium/lyrium",
+    "description": "The Lyrium Framework.",
+    "keywords": ["framework", "mvc"],
+    "type": "project",
     "authors": [
         {
-            "name": "Lyrium",
+            "name": "Anton Klochkov",
             "email": "mylyrium@gmail.com"
         }
     ],
     "require": {
         "vlucas/phpdotenv": "^2.4",
-        "twig/twig": "^2.0"
+        "twig/twig": "^2.0",
+        "illuminate/database": "^5.7"
     },
 
     "autoload": {
@@ -16,5 +20,8 @@
             "App\\": "app/",
             "Core\\": "core/"
         }
+    },
+    "require-dev": {
+        "symfony/var-dumper": "^4.2"
     }
 }

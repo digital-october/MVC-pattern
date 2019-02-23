@@ -2,19 +2,26 @@
 
 namespace App\Models;
 
-use Core\Database\Model;
+use Illuminate\Database\Eloquent\Model;
 
 class User extends Model
 {
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'login',
+        'password',
+    ];
 
-    public function setTableName()
-    {
-        return 'users';
-    }
-
-
-    public function getUserEmail($email)
-    {
-        return $this->db->query("SELECT * FROM `{$this->table}` WHERE `email`='{$email}'");
-    }
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'password',
+    ];
 }
