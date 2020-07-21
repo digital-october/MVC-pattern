@@ -10,12 +10,13 @@ class RouteCollection extends RouteCollectionAbstract
     public function load(array $routes)
     {
         foreach ($routes as $route => $options) {
-            $route = new RouteItem($options['url'], $options);
+            $route = new RouteItem($options['uri'], $options);
             $this->add($route);
         }
     }
 
-    public function list()
+
+    public function getList()
     {
         return $this->collection;
     }

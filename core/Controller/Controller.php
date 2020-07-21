@@ -6,11 +6,13 @@ use Core\Registry;
 
 abstract class Controller
 {
+    /**
+     * @param $response
+     * @return int
+     */
     public static function exitHandler($response)
     {
-
-        if (is_object($response) && get_class($response) == get_class(Registry::response()))
-        {
+        if (is_object($response) && get_class($response) == get_class(Registry::response())) {
             $response->exec();
             $response = $response->getBody();
         }

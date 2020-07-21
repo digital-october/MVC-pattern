@@ -1,10 +1,18 @@
 <?php
 
+$route = new \Core\Routing\Route();
+
 return [
-    [
-        'url' => '/',
-        'controller' => 'App\Controllers\TaskController',
-        'action' => 'index',
-        'method' => 'get'
-    ]
+
+    /*
+    |--------------------------------------------------------------------------
+    | Routes
+    |--------------------------------------------------------------------------
+    |
+    | Here is where you can register routes for your application.
+    |
+    */
+
+    $route->get('/', 'TaskController@index'),
+
 ];

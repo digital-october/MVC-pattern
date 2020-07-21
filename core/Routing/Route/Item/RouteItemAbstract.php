@@ -27,7 +27,7 @@ abstract class RouteItemAbstract implements RouteItemInterface
     {
         if ($this->runMiddleware()) {
             $controller = new $this->controller();
-            return Controller::exitHandler($controller->{$this->action}());
+            return Controller::exitHandler($controller->{$this->action}(1));
         }
     }
 
