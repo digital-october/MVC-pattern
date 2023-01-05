@@ -13,6 +13,6 @@ return [
     |
     */
 
-    $route->get('/', 'TaskController@index'),
+    $route->get('/', 'HomeController@index'),
 
 ];

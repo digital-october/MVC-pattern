@@ -80,7 +80,7 @@ abstract class Model
         $result = $this->db->query($query);
 
         $list = [];
-        foreach ($result as $itemKey => $item) {
+        foreach ($result as $item) {
             $relation = new $model();
             foreach ($item as $column => $value) {
                 $column = explode('__', $column);
@@ -135,7 +135,7 @@ abstract class Model
 
     public function __get($name)
     {
-        return isset($this->atributes[$name]) ? $this->atributes[$name] : null;
+        return $this->atributes[$name] ?? null;
     }
 
 

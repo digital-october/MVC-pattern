@@ -1,7 +1,7 @@
 {
-    "name": "my-lyrium/lyrium",
-    "description": "The Lyrium Framework.",
-    "keywords": ["framework", "mvc"],
+    "name": "digital-october/php-mvc",
+    "description": "Simple realisation of MVC pattern on php8 with docker and docker-compose",
+    "keywords": ["php", "mvc", "php8", "docker", "dockerfile", "dockercompose"],
     "type": "project",
     "authors": [
         {
@@ -10,9 +10,9 @@
         }
     ],
     "require": {
-        "vlucas/phpdotenv": "^2.4",
-        "twig/twig": "^2.0",
-        "symfony/http-foundation": "^4.2"
+        "twig/twig": "^3.0",
+        "symfony/http-foundation": "^5",
+        "illuminate/database": "^6.0"
     },
 
     "autoload": {
@@ -22,6 +22,6 @@
         }
     },
     "require-dev": {
-        "symfony/var-dumper": "^4.2"
+        "symfony/var-dumper": "^5"
     }
 }

@@ -2,11 +2,8 @@
 
 namespace App\Controllers;
 
-use App\Models\Task;
-use App\Models\User;
-use Core\Controller\Controller;
 
-class TaskController extends Controller
+class HomeController extends Controller
 {
     public function index()
     {

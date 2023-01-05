@@ -2,18 +2,19 @@
 
 namespace Core\View;
 
-use Twig\Loader\FilesystemLoader;
 use Twig\Environment;
+use Twig\Loader\FilesystemLoader;
 
 class View
 {
-    public static function init()
+    public static function init(): Environment
     {
-        $loader = new FilesystemLoader($_SERVER['DOCUMENT_ROOT'] . getenv('VIEWS_STORAGE'));
+        $root = __DIR__ . '/../../';
+        $loader = new FilesystemLoader($root . 'app/Views');
         $paths = [];
 
         if (getenv('APP_ENV') === 'production') {
-            $paths['cache'] = $_SERVER['DOCUMENT_ROOT'] . '/storage/cache/views';
+            $paths['cache'] = $root . '/storage/cache/views';
         }
 
         return new Environment($loader, $paths);

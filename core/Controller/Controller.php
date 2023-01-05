@@ -8,9 +8,9 @@ abstract class Controller
 {
     /**
      * @param $response
-     * @return int
+     * @return int|null
      */
-    public static function exitHandler($response)
+    public static function exitHandler($response): int|null
     {
         if (is_object($response) && get_class($response) == get_class(Registry::response())) {
             $response->exec();

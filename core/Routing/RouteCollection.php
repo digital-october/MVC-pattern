@@ -6,8 +6,7 @@ use Core\Routing\Route\Collection\RouteCollectionAbstract;
 
 class RouteCollection extends RouteCollectionAbstract
 {
-
-    public function load(array $routes)
+    public function load(array $routes): void
     {
         foreach ($routes as $route => $options) {
             $route = new RouteItem($options['uri'], $options);
@@ -15,8 +14,7 @@ class RouteCollection extends RouteCollectionAbstract
         }
     }
 
-
-    public function getList()
+    public function getList(): array
     {
         return $this->collection;
     }

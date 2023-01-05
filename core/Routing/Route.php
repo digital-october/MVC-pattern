@@ -2,43 +2,45 @@
 
 namespace Core\Routing;
 
+use JetBrains\PhpStorm\ArrayShape;
+
 class Route
 {
-
-    public function get($uri, $action, array $middleware = [])
+    public function get(string $uri, string $action): array
     {
-        return $this->frame('get', $uri, $action, $middleware);
+        return $this->frame('get', $uri, $action);
     }
 
-
-    public function post($uri, $action, array $middleware = [])
+    public function post(string $uri, string $action): array
     {
-        return $this->frame('post', $uri, $action, $middleware);
+        return $this->frame('post', $uri, $action);
+    }
+    
+    public function put(string $uri, string $action): array
+    {
+        return $this->frame('put', $uri, $action);
     }
 
-
-    public function put($uri, $action, array $middleware = [])
+    public function delete(string $uri, string $action): array
     {
-        return $this->frame('put', $uri, $action, $middleware);
+        return $this->frame('delete', $uri, $action);
     }
 
-
-    public function delete($uri, $action, array $middleware = [])
-    {
-        return $this->frame('delete', $uri, $action, $middleware);
-    }
-
-
-    private function frame($method, $uri, $action, $middleware)
+    #[ArrayShape([
+        'uri' => "string",
+        'method' => "string",
+        'controller' => "string",
+        'action' => "string"
+    ])]
+    private function frame(string $method, string $uri, string $action): array
     {
         $action = explode('@', $action);
 
         return [
             'uri' => $uri,
             'method' => $method,
-            'controller' => 'App\Controllers\\'.$action[0],
+            'controller' => 'App\Controllers\\' . $action[0],
             'action' => $action[1],
-            'middleware' => $middleware,
         ];
     }
 }
